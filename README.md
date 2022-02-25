@@ -6,17 +6,17 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the project1-playbook.yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  The ![project1-playbook.yml](/Playbooks/project1-playbook.yml) file will load all four playbooks in succession, allowing for quick install on active virtual machines.
+  The [project1-playbook.yml](/Playbooks/project1-playbook.yml) file will load all four playbooks in succession, allowing for quick install on active virtual machines.
 
   The playbooks are separated as follows:
 
-  ![pentest.yml](/Playbooks/pentest.yml) establishes the DVWA containers on the virtual machines within the NightoftheLivingBread virtual network
+  [pentest.yml](/Playbooks/pentest.yml) establishes the DVWA containers on the virtual machines within the NightoftheLivingBread virtual network
 
-  ![install-elk.yml](/Playbooks/install-elk.yml) uses the connection from the Jump-Box-Provisioner machine to install the ELK Server on the ELKStack virtual network VM
+  [install-elk.yml](/Playbooks/install-elk.yml) uses the connection from the Jump-Box-Provisioner machine to install the ELK Server on the ELKStack virtual network VM
 
-  ![filebeat-playbook.yml](/Playbooks/filebeat-playbook.yml) installs filebeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
+  [filebeat-playbook.yml](/Playbooks/filebeat-playbook.yml) installs filebeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
 
-  ![filebeat-playbbok.yml](/Playbooks/filebeat-playbook.yml) installs filebeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
+  [filebeat-playbbok.yml](/Playbooks/filebeat-playbook.yml) installs filebeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
 
 This document contains the following details:
 - Description of the Topologu
