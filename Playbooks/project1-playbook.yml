@@ -1,0 +1,10 @@
+#YAML
+---
+- name: deploy pentest
+  import_playbook: /etc/ansible/pentest.yml
+- name: deploy install-elk
+  import_playbook: /etc/ansible/install-elk.yml
+- name: deploy filebeat
+  import_playbook: /etc/ansible/roles/filebeat-playbook.yml
+- name: deploy metricbeat
+  import_playbook: /etc/ansible/metricbeat-playbook.yml
