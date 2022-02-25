@@ -35,7 +35,7 @@ Load balancing ensures that the application will be highly _____, in addition to
 - _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
+- File beat watches for log activity and harvests new log data from specified locations.
 - _TODO: What does Metricbeat record?_
 
 The configuration details of each machine may be found below.
@@ -52,20 +52,20 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the jump-box-provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- 198.101.32.242 & *private unlisted
 
-Machines within the network can only be accessed by _____.
+Machines within the network can only be accessed by ssh from the 10.0.0.7 
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
 
 A summary of the access policies in place can be found in the table below.
 
-| Name                 | Publicly Accessible | Allowed IP Addresses            |
-|----------------------|---------------------|---------------------------------|
-| Jump Box Provisioner | Yes                 | 198.101.32.242 & 173.28.128.23  |
-| Web-3 & Web-4        | No (only through LB)| 10.0.0.7 public  via 104.45.238.195/                       |
-| ELKServer            | No                  | 10.0.0.7  |
-| Load Balancer        | Yes                 |                                 |
+| Name                 | Publicly Accessible | Allowed IP Addresses              |
+|----------------------|---------------------|---------------------------------  |
+| Jump Box Provisioner | Yes                 | 198.101.32.242 & *privateUL       |
+| Web-3 & Web-4        | No (only through LB)| 10.0.0.7 public via 104.45.238.195|
+| ELKServer            | No                  | 10.0.0.7                          |
+| Load Balancer        | Yes                 |                                   |
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
