@@ -55,8 +55,8 @@ The machines on the internal network are not exposed to the public Internet.
 Only the jump-box-provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 198.101.32.242 & *private unlisted
 
-Machines within the network can only be accessed by ssh from the 10.0.0.7 
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by ssh from the 10.0.0.7 private ip on Jump-Box-Provisioner, but the DVWA container on Web-3 & Web-4 is allowed from allow-listed ips
+- The ELKServer is accessible via 10.0.0.7 ssh connections using port 5601
 
 A summary of the access policies in place can be found in the table below.
 
@@ -68,13 +68,14 @@ A summary of the access policies in place can be found in the table below.
 | Load Balancer        | Yes                 |                                   |
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because multiple instances of the server can be deployed quickly.
 
-The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+The [install-elk.yml](/Playbooks/install-elk.yml) implements the following tasks:
+1. Installs Docker
+2. Installs Python3-pip
+3. Installs the Docker module
+4. Increases virtual memory to 262144 and use via systctl module
+5. Downloads and launches the docker elk container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
