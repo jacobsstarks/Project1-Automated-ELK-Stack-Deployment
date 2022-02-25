@@ -60,12 +60,12 @@ Machines within the network can only be accessed by _____.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
-
+| Name                 | Publicly Accessible | Allowed IP Addresses            |
+|----------------------|---------------------|---------------------------------|
+| Jump Box Provisioner | Yes                 | 198.101.32.242 & 173.28.128.23  |
+| Web-3 & Web-4        | No (only through LB)| 10.0.0.7 public  via 104.45.238.195/                       |
+| ELKServer            | No                  | 10.0.0.7  |
+| Load Balancer        | Yes                 |                                 |
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
