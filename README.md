@@ -32,13 +32,16 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Because load balancing is able to direct traffic efficiently among vms, the resulting availability is increased and better serves to fulfill the desired state of the CIA triad.
+The Jump-Box-Provisioner allows for more secure access and modification of vms, bolstering the integrity of the network, it also provides a buffer between direct access of the webservers, ensuring administrative control over tasks concerning those machines.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- Filebeat watches for log activity and harvests new log data from specified locations.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics.
+
+- Filebeat watches for log activity and harvests new log data from specified locations
 - Metricbeat records the metrics from the OS and services running on the server
+
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+
 
 | Name     | Function                             | IP Address | Operating System   |
 |----------|------------------------------------- |------------|--------------------|
@@ -49,7 +52,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+The machines on the internal network are not exposed to the public Internet. They are protected by network security group inbound rules, and in the case of the vms, aided by the loadbalancer.
 
 Only the jump-box-provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 198.101.32.242 & *private unlisted
@@ -94,17 +97,18 @@ We have installed the following Beats on these machines:
 -MetricBeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat watches for log activity and harvests new log data from specified locations. For example, Filebeat can show us information like when a sudo command or an ssh login occurred
+- Metricbeat records the metrics from the OS and services running on the server. This information is very useful for troubleshooting performance and detecting anomalies like high cpu usage.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
+- Copy the filebeat and metricbeat configuration files to each vm in the backend pool.
 - Update the _____ file to include...
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
+
 - _Which file is the playbook? Where do you copy it?_
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - _Which URL do you navigate to in order to check that the ELK server is running?
