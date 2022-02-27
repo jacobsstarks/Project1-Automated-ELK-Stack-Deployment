@@ -130,8 +130,8 @@ SSH into the control node and follow the steps below:
 - ansible-playbook /etc/ansible/project1-playbook.yml [runs all 4 playbooks in sequence]
 
 ### To download the playbook files
-- To run this for yourself, do the following. From the git bash, run:
--
+To run this for yourself, do the following. From the git bash, run:
+
 - cd /etc/ansible
 - mkdir gitfiles
 - cd gitfiles
