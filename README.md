@@ -16,7 +16,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
   [filebeat-playbook.yml](/Playbooks/filebeat-playbook.yml) installs filebeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
 
-  [filebeat-playbbok.yml](/Playbooks/filebeat-playbook.yml) installs filebeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
+  [metricbeat-playbbok.yml](/Playbooks/metricbeat-playbook.yml) installs metricbeat monitoring program on the virtual machines within the NightoftheLivingBread virtual network
 
 This document contains the following details:
 - Description of the Topology
@@ -101,16 +101,28 @@ These Beats allow us to collect the following information from each machine:
 - Metricbeat records the metrics from the OS and services running on the server. This information is very useful for troubleshooting performance and detecting anomalies like high cpu usage.
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbooks, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the filebeat and metricbeat configuration files to each vm in the backend pool.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the filebeat and metricbeat configuration files to each vm in the backend pool from the originals in /etc/ansible/ directory.
+- Edit the hosts file within /etc/ansible/ to set the ips for webservers group and elk
+- Update the configuration files to include the correct host IP and ports for the ELKServer
+- Run the playbook, and navigate to the DVWA site and Kibana site using the allow-listed ips to check that the installation worked as expected.
 
 
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- In the directory /etc/ansible/ the pentest.yml sets up the vms with DVWA, then the [install-elk.yml](/Playbooks/install-elk.yml) sets up the ELKServer on that dedicated vm, [filebeat-playbook.yml](/Playbooks/filebeat-playbook.yml) and [metricbeat-playbbok.yml](/Playbooks/metricbeat-playbook.yml) set up filebeat and metricbeat to monitor the vms in the backend pool.
+- By updating the hosts file with the vms under webservers and the ELKServer under ELK, the playbooks can be modified to deploy their commands on whichever set is specified in the beginning with the hosts designation.
+- the ELKServer can be verified by visiting the http://[serverpublicip]:5601/app/kibana, once there, both the Metricbeat and Filebeat can be then verified by running the Module Status - Check Data button, or by simply visiting the dashboard and inspecting the data collected.
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+Commands to run the project
+ssh username@ipaddressofjumpboxvm
+sudo docker start [container name]
+sudo docker attach [container name]
+cd /etc/ansible/ 
+ls
+nano hosts [to set up ips]
+nano ansible.cfg
+nano /files/cd 
+nano metricbeat-playbook.yml  
+nano metricbeat-playbook.yml  
+nano project1-playbook.yml
