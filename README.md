@@ -112,29 +112,29 @@ SSH into the control node and follow the steps below:
 
 - In the directory /etc/ansible/ the pentest.yml sets up the vms with DVWA, then the [install-elk.yml](/Playbooks/install-elk.yml) sets up the ELKServer on that dedicated vm, [filebeat-playbook.yml](/Playbooks/filebeat-playbook.yml) and [metricbeat-playbbok.yml](/Playbooks/metricbeat-playbook.yml) set up filebeat and metricbeat to monitor the vms in the backend pool.
 - By updating the hosts file with the vms under webservers and the ELKServer under ELK, the playbooks can be modified to deploy their commands on whichever set is specified in the beginning with the hosts designation.
-- the ELKServer can be verified by visiting the http://[serverpublicip]:5601/app/kibana, once there, both the Metricbeat and Filebeat can be then verified by running the Module Status - Check Data button, or by simply visiting the dashboard and inspecting the data collected.
+- the ELKServer can be verified by visiting the http://[serverpublicip]:5601/app/kibana, once there, both the Metricbeat and Filebeat can be then verified by running the Module Status and Check Data button, or by simply visiting the dashboard and inspecting the data collected.
 
-###Commands to run the project
-ssh username@ipaddressofjumpboxvm [log into jumpbox from allow listed ip]
-sudo docker start [container name]
-sudo docker attach [container name]
-cd /etc/ansible/ 
-ls [to see files and directories]
-nano hosts [to set up ips]
-nano ansible.cfg [review configuration]
-nano /files/filebeat-config.yml [review configuration]
-nano /files/metricbeat-config.yml [review configuration]
-nano metricbeat-playbook.yml  [review configuration]
-nano roles/filebeat-playbook.yml  [review configuration]
-nano project1-playbook.yml [commands all playbooks in sequence]
-ansible-playbook /etc/ansible/project1-playbook.yml [runs all 4 playbooks in sequence]
+### Commands to run the project
+- ssh username@ipaddressofjumpboxvm [log into jumpbox from allow listed ip]
+- sudo docker start [container name]
+- sudo docker attach [container name]
+- cd /etc/ansible/ 
+- ls [to see files and directories]
+- nano hosts [to set up ips]
+- nano ansible.cfg [review configuration]
+- nano /files/filebeat-config.yml [review configuration]
+- nano /files/metricbeat-config.yml [review configuration]
+- nano metricbeat-playbook.yml  [review configuration]
+- nano roles/filebeat-playbook.yml  [review configuration]
+- nano project1-playbook.yml [commands all playbooks in sequence]
+- ansible-playbook /etc/ansible/project1-playbook.yml [runs all 4 playbooks in sequence]
 
-###
-To run this for yourself, do the following
-From the git bash, run
-cd /etc/ansible
-mkdir gitfiles
-cd gitfiles
-git clone https://github.com/jacobsstarks/Project1-Automated-ELK-Stack-Deployment/
-cd Project1-Automated-ELK-Stack-Deployment/
-ls
+### To download the playbook files
+- To run this for yourself, do the following. From the git bash, run:
+-
+- cd /etc/ansible
+- mkdir gitfiles
+- cd gitfiles
+- git clone https://github.com/jacobsstarks/Project1-Automated-ELK-Stack-Deployment/
+- cd Project1-Automated-ELK-Stack-Deployment/
+- ls
